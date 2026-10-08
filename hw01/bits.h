@@ -17,4 +17,8 @@ replaced by the lowest width bits of value
 All other bits remain unchanged */
 uint32_t set_field(uint32_t word, int pos, int width, uint32_t value);
 
+/*Interprets the lowest width bits of value 
+as a two's complement number and returns it as an int32_t */
+int32_t sign_extend(uint32_t value, int width);
+
 #endif

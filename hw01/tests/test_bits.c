@@ -20,5 +20,12 @@ int main(void)
     printf("%X\n", set_field(0xB6, 4, 4, 0x13)); 
     printf("%X\n", set_field(0xB6, 30, 4, 0xF)); 
 
+    printf("%d\n", sign_extend(0xF8, 8));
+    printf("%d\n", sign_extend(0x16, 8));
+    printf("%d\n", sign_extend(0xFFFFFF05, 4));
+    printf("%d\n", sign_extend(0x0A, 4));
+    printf("%d\n", sign_extend(0x80, 8));
+    printf("%d\n", sign_extend(0x80000000, 32));
+
     return 0;
 }

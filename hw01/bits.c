@@ -68,3 +68,31 @@ uint32_t set_field(uint32_t word, int pos, int width, uint32_t value)
     // Erase the field, then write the trimmed value into it
     return (word & ~mask) | ((value << pos) & mask);
 }
+
+int32_t sign_extend(uint32_t value, int width)
+{
+    // Width must be 1-32
+    if (width < 1 || width > 32) {
+        return 0;
+    }
+
+    // Keep only the bottom `width` bits
+    uint32_t v = get_field(value, 0, width);
+
+    // Sign bit is the leftmost bit we're reading (position width - 1)
+    int sign_bit = (v >> (width - 1)) & 1;
+
+    // Negative: real value is v - 2^width
+    if (sign_bit == 1) {
+        // Use 64 bits, since 2^32 doesn't fit in 32
+        int64_t big_v = (int64_t)v;
+        int64_t two_to_the_width = (int64_t)1 << width;
+        int64_t result = big_v - two_to_the_width;
+
+        // Answer always fits back in 32 bits
+        return (int32_t)result;
+    }
+
+    // Positive: already correct
+    return (int32_t)v;
+}
