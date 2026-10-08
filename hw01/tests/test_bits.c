@@ -15,5 +15,10 @@ int main(void)
     printf("%u\n", get_field(0xFFFFFFFF, -1, 2)); // should return 0 due to bad input
     printf("%u\n", get_field(0xFFFFFFFF, 0, 0)); // should return 0 due to bad input
 
+    printf("%X\n", set_field(0xB6, 2, 3, 2)); 
+    printf("%X\n", set_field(0xB6, 4, 4, 0x3)); 
+    printf("%X\n", set_field(0xB6, 4, 4, 0x13)); 
+    printf("%X\n", set_field(0xB6, 30, 4, 0xF)); 
+
     return 0;
 }

@@ -46,3 +46,25 @@ uint32_t get_field(uint32_t word, int pos, int width)
     // Slide the field down to position 0, then erase everything above it
     return (word >> pos) & mask;
 }
+
+uint32_t set_field(uint32_t word, int pos, int width, uint32_t value)
+{
+    // Bad input: the field doesn't exist, so change nothing and return word
+    if (width < 1 || width > 32 || pos < 0 || pos > 31 || pos + width > 32) {
+        return word;
+    }
+
+    // Ones at the bottom, exact same as get_field
+    uint32_t mask;
+    if (width == 32) {
+        mask = 0xFFFFFFFF;
+    } else {
+        mask = (1u << width) - 1;
+    }
+
+    // Move the ones up so they sit on the field
+    mask = mask << pos;
+
+    // Erase the field, then write the trimmed value into it
+    return (word & ~mask) | ((value << pos) & mask);
+}
