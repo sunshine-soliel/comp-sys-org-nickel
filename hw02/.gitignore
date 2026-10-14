@@ -1,0 +1,3 @@
+readings
+*.o
+tests/test_stats
