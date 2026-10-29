@@ -1,0 +1,18 @@
+# front door events for one day
+open
+close
+open
+close
+locked
+
+motion
+doorbell
+open
+close
+unlocked
+# this one is too long for the tally (16 characters)
+battery_low_warn
+motion
+open
+close
+locked
