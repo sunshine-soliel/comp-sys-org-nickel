@@ -4,14 +4,19 @@
 Claude (claude.ai)
 
 ## How I used it
-- I was short on time, so Claude wrote tally.h, tally.c, events.c,
-  tests/test_tally.c, the Makefile, data/door.txt, and drafted this
-  README, following the same style as my HW1 code.
-- Claude built everything with gcc -std=c11 -Wall -Wextra (no
-  warnings), ran make test (all tests pass), and ran the Part 3
-  experiment to get the real compiler error.
-- I read through the code afterward, especially tally_add, so I can
-  explain how the sorted insert works.
+- Ran short on time this week, so I had Claude generate the code
+  (tally.h, tally.c, events.c, tests/test_tally.c, Makefile, and 
+  data/door.txt).
+- I built and tested it myself on my machine with make, make test,
+  and make clean, and ran ./events on the sample data.
+- I reviewed the code before pushing, focusing on tally_add (finding
+  the insert spot, shifting entries from the end so nothing gets
+  overwritten, and checking the length before memcpy) and on why
+  the opaque type blocks t->n outside tally.c.
 
 ## Something the AI got wrong or I had to fix
-- TODO: fill in before pushing.
+- When Claude ran the Part 3 experiment to get the compiler error,
+  its first attempt wrote the test file to the wrong directory, so
+  gcc failed with "peek.c: No such file or directory" instead of the
+  opaque-type error. It had to recreate the file inside hw04 and
+  compile again to get the real message that's in the README.
