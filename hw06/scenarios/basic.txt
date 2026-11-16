@@ -1,0 +1,9 @@
+# basic.txt: press switch 0, release it, press it again.
+# LED 0 toggles on each press, not on the release.
+start 1791273600                # 2026-10-06 08:00:00 UTC
+# tick  temp   rh    switches
+0       21.5   40    0x0
+2       21.5   40    0x1        # switch 0 pressed: LED 0 on
+4       21.5   40    0x0        # released: nothing changes
+6       22.0   41.5  0x1        # pressed again: LED 0 off
+8       22.0   41.5  0x0

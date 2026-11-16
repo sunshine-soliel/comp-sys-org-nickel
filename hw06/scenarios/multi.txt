@@ -1,0 +1,10 @@
+# multi.txt: several switches at once, a held switch, a sensor change,
+# and a reading of 91.0 C, which must print as 91.0
+start 1791273600                # 2026-10-06 08:00:00 UTC
+# tick  temp   rh    switches
+0       60.0   50    0x0
+1       60.0   50    0x5        # switches 0 and 2 pressed: LEDs 0 and 2 on
+3       91.0   50    0x5        # held: no change
+4       91.0   50    0x7        # switch 1 pressed: LED 1 on, 0 and 2 stay
+6       -10.0  99.9  0x2        # 0 and 2 released, 1 held
+7       -10.0  99.9  0xF        # 0, 2, 3 pressed: 0 and 2 off, 3 on
