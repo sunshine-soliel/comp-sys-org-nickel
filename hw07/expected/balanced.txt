@@ -1,0 +1,2 @@
+balanced: 8 pairs, deepest 4
+exit status 0
